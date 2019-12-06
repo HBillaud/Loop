@@ -128,29 +128,25 @@ class HomeScreen extends StatelessWidget {
       tabBar: CupertinoTabBar(
         items: [
           BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.person),
-            title: Text('Profile'),
-          ),
-          BottomNavigationBarItem(
             icon: Icon(CupertinoIcons.location),
             title: Text('Map'),
           ),
+          BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.person),
+            title: Text('Profile'),
+          ),
         ],
+        activeColor: Colors.black,
       ),
       tabBuilder: (context, i) {
         return CupertinoTabView(
           builder: (context) {
             return CupertinoPageScaffold(
               navigationBar: CupertinoNavigationBar(
-                middle: (i == 0) ? Text('Profile') : Text('Map'),
+                middle: (i == 0) ? Text('Map') : Text('Profile'),
               ),
               child: Center(
-                child: Text(
-                  'This is tab #$i',
-                  style: CupertinoTheme.of(context)
-                      .textTheme
-                      .navLargeTitleTextStyle,
-                ),
+                child: (i == 0) ? MapScreen() : ProfileScreen(),
               ),
             );
           },
@@ -160,24 +156,56 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-/*
-class DetailScreen extends StatelessWidget {
-  const DetailScreen(this.topic);
+class MapScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Text(
+        'Map Screen Detail',
+        textAlign: TextAlign.center,
+        style: TextStyle(fontWeight: FontWeight.bold),
+    );
+  }
+}
 
-  final String topic;
+class ProfileScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return CupertinoButton(
+      child: Text(
+        'Profile details',
+        textAlign: TextAlign.center,
+        style: CupertinoTheme.of(context)
+          .textTheme
+          .actionTextStyle
+          .copyWith(fontSize: 32),
+      ),
+      onPressed: () {
+        Navigator.of(context).push(
+          CupertinoPageRoute(builder: (context) {
+            return ProfileDetailScreen();
+          }),
+        );
+      },
+    );
+  }
+}
 
-  @override Widget build(BuildContext context) {
+class ProfileDetailScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-        middle: Text('Details'),
+        middle: Text('Account'),
       ),
       child: Center(
         child: Text(
-          'Details for $topic',
-          style: CupertinoTheme.of(context).textTheme.navLargeTitleTextStyle,
+            'Details of your profile',
+            style: CupertinoTheme.of(context).textTheme.navLargeTitleTextStyle,
         ),
       ),
     );
   }
 }
-*/
