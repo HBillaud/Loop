@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:loop/screens/settings.dart';
+import 'package:loop/screens/map.dart';
 
 void main() => runApp(MyApp());
 
@@ -132,8 +134,8 @@ class HomeScreen extends StatelessWidget {
             title: Text('Map'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.person),
-            title: Text('Profile'),
+            icon: Icon(CupertinoIcons.settings),
+            title: Text('Settings'),
           ),
         ],
         activeColor: Colors.black,
@@ -142,70 +144,11 @@ class HomeScreen extends StatelessWidget {
         return CupertinoTabView(
           builder: (context) {
             return CupertinoPageScaffold(
-              navigationBar: CupertinoNavigationBar(
-                middle: (i == 0) ? Text('Map') : Text('Profile'),
-              ),
-              child: Center(
-                child: (i == 0) ? MapScreen() : ProfileScreen(),
-              ),
+                child: (i == 0) ? MapScreen() : SettingsScreen(),
             );
           },
         );
       },
-    );
-  }
-}
-
-class MapScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Text(
-        'Map Screen Detail',
-        textAlign: TextAlign.center,
-        style: TextStyle(fontWeight: FontWeight.bold),
-    );
-  }
-}
-
-class ProfileScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return CupertinoButton(
-      child: Text(
-        'Profile details',
-        textAlign: TextAlign.center,
-        style: CupertinoTheme.of(context)
-          .textTheme
-          .actionTextStyle
-          .copyWith(fontSize: 32),
-      ),
-      onPressed: () {
-        Navigator.of(context).push(
-          CupertinoPageRoute(builder: (context) {
-            return ProfileDetailScreen();
-          }),
-        );
-      },
-    );
-  }
-}
-
-class ProfileDetailScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        middle: Text('Account'),
-      ),
-      child: Center(
-        child: Text(
-            'Details of your profile',
-            style: CupertinoTheme.of(context).textTheme.navLargeTitleTextStyle,
-        ),
-      ),
     );
   }
 }
