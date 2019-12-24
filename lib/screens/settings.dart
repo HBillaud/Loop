@@ -1,47 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:loop/screens/profile.dart';
 import 'package:loop/screens/account.dart';
 import 'package:loop/screens/about.dart';
 import 'package:loop/screens/help.dart';
 import 'package:loop/screens/notifications.dart';
-import 'package:loop/widgets/settings_item.dart';
+import 'package:loop/widgets/setting_item.dart';
 import 'package:loop/widgets/settings_group.dart';
 
 class SettingsScreen extends StatelessWidget {
   SettingsItem _buildProfileItem(BuildContext context) {
     return SettingsItem(
-        label: 'Profile',
-        icon: Icon(
-            CupertinoIcons.profile_circled,
-            color: CupertinoColors.black,
-        ),
-      content:  Row(
-        children: [
-          Text(''),
-          SizedBox(width: 8),
-          SettingsNavigationIndicator(),
-        ],
+      label: 'Profile',
+      icon: Icon(
+        CupertinoIcons.profile_circled,
+        color: CupertinoColors.black,
+        size: 35,
       ),
-      onPress: () {
-          Navigator.of(context).push<void>(
-            CupertinoPageRoute(
-              builder: (context) => ProfileDetailScreen(),
-              title: 'Profile',
-            ),
-          );
-      },
-    );
-  }
-
-  SettingsItem _buildAccountItem(BuildContext context) {
-    return SettingsItem(
-        label: 'Account',
-        icon: Icon(
-            CupertinoIcons.settings,
-            color: CupertinoColors.black,
-        ),
       content: Row(
         children: [
           Text(''),
@@ -50,12 +25,38 @@ class SettingsScreen extends StatelessWidget {
         ],
       ),
       onPress: () {
-          Navigator.of(context).push<void>(
-            CupertinoPageRoute(
-              builder: (context) => AccountDetailScreen(),
-              title: 'Account',
-            ),
-          );
+        Navigator.of(context).push<void>(
+          CupertinoPageRoute(
+            builder: (context) => ProfileDetailScreen(),
+            title: 'Profile',
+          ),
+        );
+      },
+    );
+  }
+
+  SettingsItem _buildAccountItem(BuildContext context) {
+    return SettingsItem(
+      label: 'Account',
+      icon: Icon(
+        CupertinoIcons.settings,
+        color: CupertinoColors.black,
+        size: 35,
+      ),
+      content: Row(
+        children: [
+          Text(''),
+          SizedBox(width: 8),
+          SettingsNavigationIndicator(),
+        ],
+      ),
+      onPress: () {
+        Navigator.of(context).push<void>(
+          CupertinoPageRoute(
+            builder: (context) => AccountDetailScreen(),
+            title: 'Account',
+          ),
+        );
       },
     );
   }
@@ -64,8 +65,9 @@ class SettingsScreen extends StatelessWidget {
     return SettingsItem(
       label: 'Notifications',
       icon: Icon(
-          CupertinoIcons.conversation_bubble,
-          color: CupertinoColors.black,
+        CupertinoIcons.conversation_bubble,
+        color: CupertinoColors.black,
+        size: 35,
       ),
       content: Row(
         children: [
@@ -89,8 +91,9 @@ class SettingsScreen extends StatelessWidget {
     return SettingsItem(
       label: 'About',
       icon: Icon(
-          CupertinoIcons.info,
-          color: CupertinoColors.black,
+        CupertinoIcons.info,
+        color: CupertinoColors.black,
+        size: 35,
       ),
       content: Row(
         children: [
@@ -115,8 +118,9 @@ class SettingsScreen extends StatelessWidget {
     return SettingsItem(
       label: 'Help',
       icon: Icon(
-          CupertinoIcons.padlock,
-          color: CupertinoColors.black,
+        CupertinoIcons.padlock,
+        color: CupertinoColors.black,
+        size: 35,
       ),
       content: Row(
         children: [
@@ -151,17 +155,17 @@ class SettingsScreen extends StatelessWidget {
               top: false,
               sliver: SliverList(
                 delegate: SliverChildListDelegate(
-                  <Widget>[
-                    SettingsGroup(
-                      items: [
-                        _buildProfileItem(context),
-                        _buildAccountItem(context),
-                        _buildNotificationsItem(context),
-                        _buildAboutItem(context),
-                        _buildHelpItem(context),
-                      ],
-                    ),
-                  ]
+                    <Widget>[
+                      SettingsGroup(
+                        items: [
+                          _buildProfileItem(context),
+                          _buildAccountItem(context),
+                          _buildNotificationsItem(context),
+                          _buildAboutItem(context),
+                          _buildHelpItem(context),
+                        ],
+                      ),
+                    ]
                 ),
               ),
             )

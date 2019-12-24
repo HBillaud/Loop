@@ -19,7 +19,7 @@ class SettingsNavigationIndicator extends StatelessWidget {
 class SettingsItem extends StatefulWidget {
   const SettingsItem({
     @required this.label,
-    this.icon,
+    @required this.icon,
     this.content,
     this.onPress(),
     Key key,
@@ -71,7 +71,7 @@ class SettingsItemState extends State<SettingsItem> {
                     bottom: 2,
                   ),
                   child: SizedBox(
-                    height: 45,
+                    height: 50,
                     width: 29,
                     child: widget.icon,
                   ),
