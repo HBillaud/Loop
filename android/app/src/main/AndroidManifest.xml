@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.loop">
+    package="com.example.loop"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <!-- io.flutter.app.FlutterApplication is an android.app.Application that
          calls FlutterMain.startInitialization(this); in its onCreate method.
@@ -10,6 +11,14 @@
         android:name="io.flutter.app.FlutterApplication"
         android:label="loop"
         android:icon="@mipmap/ic_launcher">
+
+        <!-- tools:replace="android:appComponentFactory" -->
+
+        <!-- Google Maps API key -->
+        <meta-data
+            android:name="com.google.android.geo.AIzaSyC5R3fFt6-b6JfEr1EoK3sj7pxfousgWzg"
+            android:value="AIzaSyC5R3fFt6-b6JfEr1EoK3sj7pxfousgWzg" />
+
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
